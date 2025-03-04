@@ -1,16 +1,17 @@
-function monstersCalc() {
-    let initialPopulation = prompt('Enter the initial population: ');
-    let rateGrowth = prompt('Enter the rate of growth: ');
-    let timeHours = prompt('Enter the time in hours: ');
+function messageVerifier() {
+    let message = prompt('Enter a message: ');
 
-    let s = parseFloat(initialPopulation) * Math.pow(Math.E, (parseFloat(rateGrowth) * parseFloat(timeHours)));
-    let finalPopulation = Math.round(s);
-
-    let monsterLocation = prompt('Enter the location of the monster: ');
-    let monsterName = prompt('Enter the name of the monster: ');
-
-    let monsterInfos = monsterLocation.concat(' ', monsterName).toUpperCase;
-
-    document.getElementById('monstersCalc').innerHTML = 'After ' + timeHours + ' hours, the population of ' + monsterInfos + ' has increased to ' + finalPopulation + '!';
+    if (message.indexOf('FR') !== -1) {
+        document.getElementById('result').innerHTML = 'The message "' + message + '" is legitimate!';
+    } else if ((message.indexOf('FR') !== -1) && (message.indexOf('AI') !== -1)) {
+        document.getElementById('result').innerHTML = 'The message "' + message + '" is legitimate!';
+    } else if (message.indexOf('AI') !== -1) {
+        document.getElementById('result').innerHTML = 'The message "' + message + '" is tampered!';
+    } else if ((message.indexOf('aI') !== -1) || (message.indexOf('Ai') !== -1)) {
+        document.getElementById('result').innerHTML = 'The message "' + message + '" is tampered!';
+    } else {
+        document.getElementById('result').innerHTML = 'The message "' + message + '" is not yet encoded!';
+    }
 }
+
 
